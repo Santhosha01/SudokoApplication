@@ -32,7 +32,6 @@ public class SudokoApplication {
 	
 			public static void start(int[][] arr) {
 		        int count=0;
-		        System.out.println("Hi");
 				for (int i = 0; i < gridsize;i++) {
 					for (int j = 0; j < gridsize;) {
 						if (arr[i][j] == 0) {
@@ -48,26 +47,20 @@ public class SudokoApplication {
                                         printboard(arr);									
 									} else {
 										count++;	
-										System.out.println(i+ " "+j);
 										j=precol;
-										System.out.println("hi");
 										System.out.println("Invalid Number, you have only "+ (3- count)+" chance left");
                                         checkchance(count);
                                         
 									}
 								} else {
 									count++;
-									System.out.println(i+ " "+j);
 									j=precol;
-									System.out.println("hello");
 									System.out.println("Invalid Number, you have only"+ (3- count)+" chance left");
 									  checkchance(count);
 								}
 							} else {
 								count++;
-								System.out.println(i+ " "+j);
 								j=precol;
-								System.out.println("hey");
 								System.out.println("Invalid Number, you have only "+ (3- count)+" chance left ");
 								  checkchance(count);
 							}
@@ -77,6 +70,7 @@ public class SudokoApplication {
 						}
 					}
 				}
+				System.out.println("You Win the Game");
 			}
              public static  void checkchance(int count) {
             	 if(count==3) {
