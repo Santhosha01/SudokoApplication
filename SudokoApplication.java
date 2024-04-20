@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class SudokoApplication {
 	static Scanner sc = new Scanner(System.in);
-        static int gridsize=9;
+    static int gridsize=9;
 	public static void main(String[] args) {
 		int arr[][]= {
 				{7, 0 ,2 ,0 ,5 ,0 ,6 ,0 ,0},
@@ -32,43 +32,56 @@ public class SudokoApplication {
 	
 			public static void start(int[][] arr) {
 		        int count=0;
-				for (int i = 0; i < gridsize; i++) {
-					for (int j = 0; j < gridsize; j++) {
+		        System.out.println("Hi");
+				for (int i = 0; i < gridsize;i++) {
+					for (int j = 0; j < gridsize;) {
 						if (arr[i][j] == 0) {
-							System.out.println("\nEnter the Number");
+							int precol=j;
+							System.out.println("\nEnter the Number for "+i+" row "+j+" column");
 							int number = sc.nextInt();
 							if (checkRow(arr, number, i)) {
 								if (checkcol(arr, number, j)) {
 									if (checkBox(arr, number, i, j)) {
 										arr[i][j] = number;
-										System.out.println("Number added successfully\n");
-                                                                                printboard(arr);									
+										j++;
+										System.out.println("Value added successfully\n");
+                                        printboard(arr);									
 									} else {
-										count++;
+										count++;	
+										System.out.println(i+ " "+j);
+										j=precol;
+										System.out.println("hi");
 										System.out.println("Invalid Number, you have only "+ (3- count)+" chance left");
-                                                                                checkchance(count);
+                                        checkchance(count);
+                                        
 									}
 								} else {
 									count++;
+									System.out.println(i+ " "+j);
+									j=precol;
+									System.out.println("hello");
 									System.out.println("Invalid Number, you have only"+ (3- count)+" chance left");
-									checkchance(count);
-									break;
+									  checkchance(count);
 								}
 							} else {
 								count++;
+								System.out.println(i+ " "+j);
+								j=precol;
+								System.out.println("hey");
 								System.out.println("Invalid Number, you have only "+ (3- count)+" chance left ");
-								checkchance(count);
-								break;
+								  checkchance(count);
 							}
+						}
+						else {
+							j++;
 						}
 					}
 				}
 			}
              public static  void checkchance(int count) {
             	 if(count==3) {
-		     System.out.println("Game Over");
-                     System.exit(0);
-		 } 
+					 System.out.println("Game Over");
+                     System.exit(0);} 
              }
 			public static boolean checkRow(int arr[][], int number, int row) {
 				for (int i = 0; i < arr.length; i++) {
