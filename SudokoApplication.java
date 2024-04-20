@@ -36,7 +36,6 @@ public class SudokoApplication {
 					count=0;
 					for (int j = 0; j < gridsize;) {
 						if (arr[i][j] == 0) {
-							int precol=j;
 							System.out.println("\nEnter the Number for "+i+" row "+j+" column");
 							int number = sc.nextInt();
 							if (checkRow(arr, number, i)) {
@@ -48,20 +47,17 @@ public class SudokoApplication {
                                         printboard(arr);									
 									} else {
 										count++;	
-										j=precol;
 										System.out.println("Invalid Number, you have only "+ (3- count)+" chance left in this row");
                                         checkchance(count);
                                         
 									}
 								} else {
 									count++;
-									j=precol;
 									System.out.println("Invalid Number, you have only"+ (3- count)+" chance left in this row");
 									  checkchance(count);
 								}
 							} else {
 								count++;
-								j=precol;
 								System.out.println("Invalid Number, you have only "+ (3- count)+" chance left in this row");
 								  checkchance(count);
 							}
