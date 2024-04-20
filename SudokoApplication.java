@@ -33,6 +33,7 @@ public class SudokoApplication {
 			public static void start(int[][] arr) {
 		        int count=0;
 				for (int i = 0; i < gridsize;i++) {
+					count=0;
 					for (int j = 0; j < gridsize;) {
 						if (arr[i][j] == 0) {
 							int precol=j;
@@ -48,20 +49,20 @@ public class SudokoApplication {
 									} else {
 										count++;	
 										j=precol;
-										System.out.println("Invalid Number, you have only "+ (3- count)+" chance left");
+										System.out.println("Invalid Number, you have only "+ (3- count)+" chance left in this row");
                                         checkchance(count);
                                         
 									}
 								} else {
 									count++;
 									j=precol;
-									System.out.println("Invalid Number, you have only"+ (3- count)+" chance left");
+									System.out.println("Invalid Number, you have only"+ (3- count)+" chance left in this row");
 									  checkchance(count);
 								}
 							} else {
 								count++;
 								j=precol;
-								System.out.println("Invalid Number, you have only "+ (3- count)+" chance left ");
+								System.out.println("Invalid Number, you have only "+ (3- count)+" chance left in this row");
 								  checkchance(count);
 							}
 						}
