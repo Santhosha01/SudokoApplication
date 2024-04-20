@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class SudokoApplication {
 	static Scanner sc = new Scanner(System.in);
-    static int gridsize=9;
+        static int gridsize=9;
 	public static void main(String[] args) {
 		int arr[][]= {
 				{7, 0 ,2 ,0 ,5 ,0 ,6 ,0 ,0},
@@ -31,44 +31,44 @@ public class SudokoApplication {
 	}
 	
 			public static void start(int[][] arr) {
-		           int count=0;
-				for (int i = 0; i < arr.length; i++) {
-					for (int j = 0; j < arr[i].length; j++) {
+		        int count=0;
+				for (int i = 0; i < gridsize; i++) {
+					for (int j = 0; j < gridsize; j++) {
 						if (arr[i][j] == 0) {
-							System.out.println("\nEnter the Number for "+i+" row "+j+" column");
-							int number = sc.nextInt();//
+							System.out.println("\nEnter the Number");
+							int number = sc.nextInt();
 							if (checkRow(arr, number, i)) {
 								if (checkcol(arr, number, j)) {
 									if (checkBox(arr, number, i, j)) {
 										arr[i][j] = number;
-										System.out.println("Value added successfully\n");
-                                        printboard(arr);									
+										System.out.println("Number added successfully\n");
+                                                                                printboard(arr);									
 									} else {
 										count++;
 										System.out.println("Invalid Number, you have only "+ (3- count)+" chance left");
-                                        checkchange(count);
+                                                                                checkchance(count);
 									}
 								} else {
 									count++;
 									System.out.println("Invalid Number, you have only"+ (3- count)+" chance left");
-									  checkchange(count);
+									checkchance(count);
 									break;
 								}
 							} else {
 								count++;
 								System.out.println("Invalid Number, you have only "+ (3- count)+" chance left ");
-								  checkchange(count);
+								checkchance(count);
 								break;
 							}
 						}
 					}
-					System.out.println();
 				}
 			}
-             public static  void checkchange(int count) {
+             public static  void checkchance(int count) {
             	 if(count==3) {
-						System.out.println("game Over");
-                     System.exit(0);} 
+		     System.out.println("Game Over");
+                     System.exit(0);
+		 } 
              }
 			public static boolean checkRow(int arr[][], int number, int row) {
 				for (int i = 0; i < arr.length; i++) {
